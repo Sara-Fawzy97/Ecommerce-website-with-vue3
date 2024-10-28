@@ -36,7 +36,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 nav>a{
   font-family:  "Montserrat", sans-serif;;
   font-weight: bold;
