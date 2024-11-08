@@ -14,9 +14,9 @@
     </div>
       <div class="list hidden  lg:flex lg:gap-x-12 ">
         <router-link :to="{name:'homePage'}">Home</router-link>
-        <router-link to="/">Shop</router-link>
-        <router-link to="">About</router-link>
-        <router-link to="">Contact</router-link>
+        <router-link :to="{name:'shopPage'}">Shop</router-link>
+        <router-link to="/">About</router-link>
+        <router-link :to="{name:'contactPage'}">Contact</router-link>
     </div>
 
     <div class="flex gap-x-5">

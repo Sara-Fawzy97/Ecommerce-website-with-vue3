@@ -5,5 +5,5 @@ import store from './store'
 import router from './router'
 
 
-createApp(App).use(router).mount('#app')
-App.use(store);
+createApp(App).use(router).use(store).mount('#app')
+// App.use(store);

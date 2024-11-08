@@ -9,8 +9,12 @@ module.exports = {
            
             colors:{
                 'primary-color':'#B88E2F',
-                'gray':'#9F9F9F'
-            }
+                'gray':'#9F9F9F',
+                'dark-gray':'#3a3a3a'
+                
+            },
+
+            
         },
     },
     plugins: [],

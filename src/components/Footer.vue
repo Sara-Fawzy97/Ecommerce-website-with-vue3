@@ -1,5 +1,5 @@
 <template>
-  <div class="footer px-24 py-12 border-t-2 border-gray text-left">
+  <div class="footer px-24 py-12 border-t-2 border-gray text-left mt-20">
     <div class="flex flex-wrap justify-around ">
       <div>
         <h3 class="font-bold text-base">Funiro.</h3>
