@@ -48,5 +48,6 @@ nav>a{
 }
 svg{
   width:22px;
-  height: 22px;}
+  height: 22px;
+  }
 </style>

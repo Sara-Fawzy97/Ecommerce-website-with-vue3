@@ -23,6 +23,8 @@ export default {
 
 #app {
   /* font-family: Avenir, Helvetica, Arial, sans-serif; */
+  font-family: "Poppins", serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -38,7 +40,5 @@ nav>a{
   font-family: "Poppins", serif;
   font-weight: 500;
 }
-svg{
-  width:22px;
-  height: 22px;}
+
 </style>

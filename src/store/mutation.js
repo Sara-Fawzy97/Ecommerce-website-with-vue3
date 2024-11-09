@@ -6,4 +6,5 @@
 
  export const getProducts=(state,products)=>{
   state.ALlproducts=products.products
+  console.log(state.ALlproducts)
  }
