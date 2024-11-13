@@ -18,3 +18,11 @@ export const getAllProducts=({commit})=>{
     })
 }
 
+/////////////get Single product/////////////
+export const getOneProduct=({commit},id)=>{
+    axiosClient.get(`products/${id}`).then(res=>{
+            commit('getSingleProduct',res.data)
+        }
+    )
+}
+

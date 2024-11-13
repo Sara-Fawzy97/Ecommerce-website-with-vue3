@@ -30,9 +30,12 @@
   <!-------display productss--->
   <div>
     <div
-      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:px-6 px-2"
+      class="grid grid-cols-2 mt-10 md:grid-cols-3 lg:grid-cols-4 gap-4 md:px-6 px-2"
     >
-      <div class="card mb-6" v-for="product in products" :key="product.id">
+
+    <!----the over background------>
+      <div class="card  mb-6 relative" v-for="product in products" :key="product.id">
+       
         <img :src="product.thumbnail" alt="product.title" />
         <div class="description px-2 pt-2 pb-7 text-start">
           <h5
@@ -47,12 +50,19 @@
             {{ product.price }} $</span
           >
         </div>
+
+        <div class="  card-hover:block bg-[#3A3A3A]/70 w-full h-full absolute top-0 content-center">
+          
+          <router-link :to="'/shop/'+product.id" class="text-primary-color hover:bg-white py-2 px-7 border-solid border-primary-color border-2" >View</router-link><br>
+
+          <button class="bg-white text-primary-color py-2 px-7 mt-5">Add To Cart</button>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="bg-[#FAF3EA]">
-    <div class="grid grid-cols-2 lg:grid-flow-col lg:auto-cols-max gap-9 py-20 px-10 ">
+    <div class="grid grid-cols-2 lg:grid-flow-col lg:auto-cols-max gap-9 md:py-20 py-12 md:px-10 px-7 ">
       <div class="flex gap-2">
         <svg
           width="60"
@@ -68,10 +78,10 @@
         </svg>
 
         <div class="text-start">
-          <h5 class="font-semibold text-[#242424] text-[20px] lg:text-[25px]">
+          <h5 class="font-semibold text-[#242424] text-[18px] md:text-[20px] lg:text-[25px]">
             High Quality
           </h5>
-          <span class="font-medium text-[#898989] text-[18px] lg:text-[20px]"
+          <span class="font-medium text-[#898989] text-base md:text-[18px] lg:text-[20px]"
             >crafted from top materials</span
           >
         </div>
@@ -91,10 +101,10 @@
         </svg>
 
         <div class="text-start">
-          <h5 class="font-semibold text-[#242424] text-[20px] lg:text-[25px]">
+          <h5 class="font-semibold text-[#242424] text-[18px] md:text-[20px] lg:text-[25px]">
             Warranty Protection
           </h5>
-          <span class="font-medium text-[#898989] text-[18px] lg:text-[20px]"
+          <span class="font-medium text-[#898989] text-base md:text-[18px] lg:text-[20px]"
             >Over 2 years</span
           >
         </div>
@@ -114,10 +124,10 @@
         </svg>
 
         <div class="text-start">
-          <h5 class="font-semibold text-[#242424] text-[20px] lg:text-[25px]">
+          <h5 class="font-semibold text-[#242424] text-[18px] md:text-[20px] lg:text-[25px]">
             Free Shipping
           </h5>
-          <span class="font-medium text-[#898989] text-[18px] lg:text-[20px]"
+          <span class="font-medium text-[#898989] text-base md:text-[18px] lg:text-[20px]"
             >Order over 150 $</span
           >
         </div>
@@ -137,10 +147,10 @@
         </svg>
 
         <div class="text-start">
-          <h5 class="font-semibold text-[#242424] text-[20px] lg:text-[25px]">
+          <h5 class="font-semibold text-[#242424] text-[18px] md:text-[20px] lg:text-[25px]">
             24 / 7 Support
           </h5>
-          <span class="font-medium text-[#898989] text-[18px] lg:text-[20px]"
+          <span class="font-medium text-[#898989] text-base md:text-[18px] lg:text-[20px]"
             >Dedicated support</span
           >
         </div>

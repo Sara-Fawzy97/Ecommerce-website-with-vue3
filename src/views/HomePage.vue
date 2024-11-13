@@ -11,7 +11,7 @@
         luctus nec ullamcorper mattis.
       </p>
       <span
-        ><router-link to="/" class="font-bold bg-primary-color md:p-3"
+        ><router-link :to="{name:'shopPage'}" class="font-bold bg-primary-color md:p-3"
           >Buy Now</router-link
         ></span
       >
@@ -40,24 +40,49 @@
     </div>
   </div>
 
+
+  <!------------view products-------------->
   <div class="products">
     <div class="my-20">
       <h5 class="text-3xl font-bold">Our Products</h5>
     </div>
     <div >
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:px-6 px-2">
-            <div class="card mb-6"  v-for="product in products.slice(0,8)" :key="product.id">
+            <div class="card mb-6"  v-for="product in products" :key="product.id">
                 <img :src="product.thumbnail" alt="product.title">
                 <div class="description px-2 pt-2 pb-7 text-start">
                     <h5 class="dark-gray text-[16px] md:text-[22px] lg:text-[24px] font-semibold">{{product.title}}</h5>
                     <p class="font-medium text-[10px] md:text-base text-[#898989]">{{product.description.substring(0,40)}} ...</p>
                     <span class="dark-gray font-semibold text-[14px] md:text-[20px]"> {{product.price}} $</span>
                 </div>
-                
+                <div class="card  mb-6 relative" v-for="product in products" :key="product.id">
+       
+       <img :src="product.thumbnail" alt="product.title" />
+       <div class="description px-2 pt-2 pb-7 text-start">
+         <h5
+           class="dark-gray text-[16px] md:text-[22px] lg:text-[24px] font-semibold"
+         >
+           {{ product.title }}
+         </h5>
+         <p class="font-medium text-[10px] md:text-base text-[#898989]">
+           {{ product.description.substring(0, 40) }} ...
+         </p>
+         <span class="dark-gray font-semibold text-[14px] md:text-[20px]">
+           {{ product.price }} $</span
+         >
+       </div>
+
+       <div class="  card-hover:block bg-[#3A3A3A]/70 w-full h-full absolute top-0 content-center">
+         
+         <router-link :to="'/shop/'+product.id" class="text-primary-color hover:bg-white py-2 px-7 border-solid border-primary-color border-2" >View</router-link><br>
+
+         <button class="bg-white text-primary-color py-2 px-7 mt-5">Add To Cart</button>
+       </div>
+     </div>
             </div>
         </div>
         <router-link :to="{name:'shopPage' }" class="text-primary-color text-base border-solid border-primary-color border-2 py-2 px-7 mt-5" > See More</router-link>
-      <!-- <ALlProducts></ALlProducts> -->
+      
     </div>
   </div>
 </template>
@@ -112,7 +137,7 @@ onMounted(() => {
 
 .description{
     background-color:#F4F5F7;
-    height: 150px;
+    height: 180px;
 }
 
 /*** mobile and tablet view***/
