@@ -5,5 +5,7 @@ import store from './store'
 import router from './router'
 
 
-createApp(App).use(router).use(store).mount('#app')
-// App.use(store);
+const app=createApp(App)
+app.use(router)
+app.mount('#app')
+app.use(store);

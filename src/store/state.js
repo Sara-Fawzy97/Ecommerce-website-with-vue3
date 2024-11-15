@@ -6,5 +6,6 @@ export default {
         'https://cdn.dummyjson.com/products/images/furniture/Annibale%20Colombo%20Bed/thumbnail.png'
     ],
     ALlproducts:[],
-    oneProduct:null
+    oneProduct:{},
+    cartItems:[]
 }

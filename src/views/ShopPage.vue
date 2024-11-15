@@ -1,11 +1,11 @@
 <template>
   <div class="thumb h-[300px]">
     <div>
-      <div>
+      <div class="content-center">
         <h3 class="text-[48px] font-medium">Shop</h3>
         <div class="text-[16px]">
           <a href="/" class="font-medium">Home</a> >
-          <a href="#" class="">Shop</a>
+          <a href="#" class="">Shop</a> 
         </div>
       </div>
     </div>

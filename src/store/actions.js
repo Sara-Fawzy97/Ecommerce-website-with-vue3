@@ -26,3 +26,12 @@ export const getOneProduct=({commit},id)=>{
     )
 }
 
+export const increment=({ commit }) =>{
+            commit('increment');
+        }
+
+export const decrement=({ commit }) =>{
+            commit('decrement');
+        }
+
+

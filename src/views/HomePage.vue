@@ -11,7 +11,9 @@
         luctus nec ullamcorper mattis.
       </p>
       <span
-        ><router-link :to="{name:'shopPage'}" class="font-bold bg-primary-color md:p-3"
+        ><router-link
+          :to="{ name: 'shopPage' }"
+          class="font-bold bg-primary-color md:p-3"
           >Buy Now</router-link
         ></span
       >
@@ -32,57 +34,70 @@
         :key="index"
       >
         <!-- {{ category }} -->
-        <img :src="categoriesImg[index]" :alt="category.slug" class="h-[150px] md:h-[300px]"/>
-        <a class="font-semibold text-[20px] md:text-[24px]" :href="category.url" :alt="category.slug">
+        <img
+          :src="categoriesImg[index]"
+          :alt="category.slug"
+          class="h-[150px] md:h-[300px]"
+        />
+        <a
+          class="font-semibold text-[20px] md:text-[24px]"
+          :href="category.url"
+          :alt="category.slug"
+        >
           {{ category.name }}</a
         >
       </div>
     </div>
   </div>
-
-
   <!------------view products-------------->
   <div class="products">
     <div class="my-20">
       <h5 class="text-3xl font-bold">Our Products</h5>
     </div>
-    <div >
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:px-6 px-2">
-            <div class="card mb-6"  v-for="product in products" :key="product.id">
-                <img :src="product.thumbnail" alt="product.title">
-                <div class="description px-2 pt-2 pb-7 text-start">
-                    <h5 class="dark-gray text-[16px] md:text-[22px] lg:text-[24px] font-semibold">{{product.title}}</h5>
-                    <p class="font-medium text-[10px] md:text-base text-[#898989]">{{product.description.substring(0,40)}} ...</p>
-                    <span class="dark-gray font-semibold text-[14px] md:text-[20px]"> {{product.price}} $</span>
-                </div>
-                <div class="card  mb-6 relative" v-for="product in products" :key="product.id">
-       
-       <img :src="product.thumbnail" alt="product.title" />
-       <div class="description px-2 pt-2 pb-7 text-start">
-         <h5
-           class="dark-gray text-[16px] md:text-[22px] lg:text-[24px] font-semibold"
-         >
-           {{ product.title }}
-         </h5>
-         <p class="font-medium text-[10px] md:text-base text-[#898989]">
-           {{ product.description.substring(0, 40) }} ...
-         </p>
-         <span class="dark-gray font-semibold text-[14px] md:text-[20px]">
-           {{ product.price }} $</span
-         >
-       </div>
+    <div>
+      <div
+        v-if="products"
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:px-6 px-2"
+      >
+        <div class="card mb-6 relative" v-for="product in products" :key="product.id">
+          <img :src="product.thumbnail" alt="product.title" />
+          <div class="description px-2 pt-2 pb-7 text-start">
+            <h5
+              class="dark-gray text-[16px] md:text-[22px] lg:text-[24px] font-semibold"
+            >
+              {{ product.title }}
+            </h5>
+            <p class="font-medium text-[10px] md:text-base text-[#898989]">
+              {{ product.description.substring(0, 40) }} ...
+            </p>
+            <span class="dark-gray font-semibold text-[14px] md:text-[20px]">
+              {{ product.price }} $</span
+            >
 
-       <div class="  card-hover:block bg-[#3A3A3A]/70 w-full h-full absolute top-0 content-center">
-         
-         <router-link :to="'/shop/'+product.id" class="text-primary-color hover:bg-white py-2 px-7 border-solid border-primary-color border-2" >View</router-link><br>
+               <!--  the over background-------->
+               
+          </div>
+          <div
+              class="card-hover:block bg-[#3A3A3A]/70 w-full h-full absolute top-0 content-center"
+            >
+              <router-link
+                :to="'/shop/' + product.id"
+                class="text-primary-color hover:bg-white py-2 px-7 border-solid border-primary-color border-2"
+                >View</router-link
+              ><br />
 
-         <button class="bg-white text-primary-color py-2 px-7 mt-5">Add To Cart</button>
-       </div>
-     </div>
+              <button class="bg-white text-primary-color py-2 px-7 mt-5">
+                Add To Cart
+              </button>
             </div>
         </div>
-        <router-link :to="{name:'shopPage' }" class="text-primary-color text-base border-solid border-primary-color border-2 py-2 px-7 mt-5" > See More</router-link>
-      
+      </div>
+      <router-link
+        :to="{ name: 'shopPage' }"
+        class="text-primary-color text-base border-solid border-primary-color border-2 py-2 px-7 mt-5"
+      >
+        See More</router-link
+      >
     </div>
   </div>
 </template>
@@ -99,14 +114,12 @@ import { useStore } from "vuex";
 const store = useStore();
 const categories = computed(() => store.state.categories);
 const categoriesImg = computed(() => store.state.categoriesImg);
-const products=computed(()=>store.state.ALlproducts)
-
+const products = computed(() => store.state.ALlproducts);
 
 onMounted(() => {
   // getCategories()
   store.dispatch("getAllCategories");
-  store.dispatch('getAllProducts')
-
+  store.dispatch("getAllProducts");
 });
 </script>
 
@@ -134,10 +147,9 @@ onMounted(() => {
   font-family: "Poppins", serif;
 }
 
-
-.description{
-    background-color:#F4F5F7;
-    height: 180px;
+.description {
+  background-color: #f4f5f7;
+  height: 180px;
 }
 
 /*** mobile and tablet view***/
@@ -146,12 +158,9 @@ onMounted(() => {
     font-size: 10px;
     padding: 6px 14px;
   }
- 
 }
 
 /***mobile only* */
-@media (max-width:425px) {
-   
-  
+@media (max-width: 425px) {
 }
 </style>
