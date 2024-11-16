@@ -3,6 +3,8 @@ import HomePage from '../views/HomePage.vue';
 import ShopPage from '../views/ShopPage.vue';
 import ContactPage from '../views/ContactPage.vue';
 import SingleProduct from '@/views/SingleProduct.vue';
+import CartPage from '@/views/CartPage.vue';
+
 
 
 
@@ -25,7 +27,13 @@ const routes = [
         path:'/shop/:id',
         name:'singleProduct',
         component:SingleProduct
-    }
+    },{
+        path:'/cart',
+        name:'cartPage',
+        component:CartPage
+    },
+    
+
 ]
 
 const router = createRouter({

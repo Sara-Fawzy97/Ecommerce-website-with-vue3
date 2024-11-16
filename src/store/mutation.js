@@ -28,20 +28,27 @@ export const addToCart =(state,product)=>{
 let exist=false
   for( let i=0; i<state.cartItems.length; i++){
         if(state.cartItems[i].id== product.id){
-          state.cartItems[i].count+=product.count
-          exist=true
+          state.cartItems[i].count += product.count;
+          exist=true;
+          console.log(  state.cartItems[i].count)
+          console.log(  product.count)
           break;
-  }}
-  // let ProductInCart= state.cartItems.find(item=>{
-  //   // console.log(item.id)
-  //   return item.id === product.id;
-  // });
-  
-  // if(ProductInCart){
-  //   ProductInCart.count+=product.count
-  // }
+           }
+     }
+ 
   if(!exist)
   state.cartItems.push(product)
   
+  localStorage.setItem('Cart-Items',JSON.stringify(state.cartItems))
   console.log(state.cartItems)
+}
+
+
+////get cartItems
+export const getCart=(state)=>{
+  if(localStorage.getItem('Cart-Items')){
+    state.cartItems= JSON.parse(localStorage.getItem('Cart-Items'))
+  }
+  console.log(state.cartItems)
+  
 }

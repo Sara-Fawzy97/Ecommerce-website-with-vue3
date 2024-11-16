@@ -70,12 +70,35 @@
 </div>
 </div>
 
-<div class="mt-10">
+<div class="mt-7">
    <hr>
    <div class="flex gap-4 justify-center mt-4">
       <h3>Description</h3>
       <span>|</span>
-      <h3>Reviews</h3>
+      <h3>Reviews </h3>
+     
+   </div>
+
+   <!------reviews Section ---->
+   <div  class="p-20 text-start ">
+      <table class="w-full">
+         <tr  v-for="review in SingleProduct.reviews"  :key="review.id">
+            <td class="p-5">
+             <h5 class="bold">{{ review.reviewerName}}</h5>
+            </td>
+            <td class="p-5 flex justify-between">
+               <div>
+               <p class="text-gray ">{{ review.comment }}</p>
+               <span class="text-xs">{{ review.date.substring(0,10) }}</span>
+            </div>
+               <div class=" flex">
+         <StarIcon v-for="rating in [0, 1, 2, 3, 4]" :key="rating" :class="[review.rating > rating ? 'text-primary-color' : 'text-gray-200', 'size-5 shrink-0']" aria-hidden="true" />
+      </div>
+            </td>
+         </tr>
+         
+      </table>
+       
    </div>
 </div>
 </div>
@@ -96,7 +119,7 @@ const SingleProduct = computed(() => store.state.oneProduct);
 
 const route = useRouter();
 
- const count =ref(1)
+ let count =ref(1)
 
   
 //to replace the main product img with others 
