@@ -87,7 +87,7 @@
                 >View</router-link
               ><br />
 
-              <button class="bg-white text-primary-color py-2 px-7 mt-5">
+              <button @click="addToCart(product)" class="bg-white text-primary-color py-2 px-7 mt-5">
                 Add To Cart
               </button>
             </div>
@@ -104,7 +104,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from "vue";
+import { computed, onMounted,ref } from "vue";
 import { useStore } from "vuex";
 // import { ALlProducts } from "../components/AllProducts.vue";
 
@@ -116,6 +116,12 @@ const store = useStore();
 const categories = computed(() => store.state.categories);
 const categoriesImg = computed(() => store.state.categoriesImg);
 const products = computed(() => store.state.ALlproducts);
+
+let count= ref(1)
+const addToCart= (item)=>{
+   item.count=count.value
+   store.commit('addToCart',item)
+}
 
 onMounted(() => {
   // getCategories()

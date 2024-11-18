@@ -52,3 +52,16 @@ export const getCart=(state)=>{
   console.log(state.cartItems)
   
 }
+
+
+/////delete item from the cart
+export const delCartItem=(state,id)=>{
+  for( let i=0; i<state.cartItems.length; i++){
+    if(state.cartItems[i].id== id){
+      state.cartItems.splice(i,1)
+      localStorage.setItem('Cart-Items',JSON.stringify(state.cartItems));
+      break;
+    }
+  }
+
+}
