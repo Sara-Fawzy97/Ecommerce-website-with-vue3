@@ -1,5 +1,4 @@
 <template>
-  <router-link to="/cart">Cart</router-link>
   <div class="homeBanner md:pt-32 pt-9 md:pr-20 pr-10 pb-28">
     <div class="w-6/12 text-left md:p-11 p-3">
       <span class="text-xs font-semibold">New arrival</span>
@@ -35,7 +34,8 @@
         :key="index"
       >
         <!-- {{ category }} -->
-        <img
+          <router-link :to="'/categories/'+ category.name "> 
+            <img
           :src="categoriesImg[index]"
           :alt="category.slug"
           class="h-[150px] md:h-[300px]"
@@ -47,6 +47,8 @@
         >
           {{ category.name }}</a
         >
+          </router-link>
+       
       </div>
     </div>
   </div>

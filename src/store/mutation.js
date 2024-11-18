@@ -63,5 +63,14 @@ export const delCartItem=(state,id)=>{
       break;
     }
   }
+}
+
+////////////// get category products
+
+export const categoriesProducts=(state,oneCategory)=>{
+
+  state.category=oneCategory
+  console.log(oneCategory)
+
 
 }

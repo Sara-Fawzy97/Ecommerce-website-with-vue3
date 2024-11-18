@@ -4,6 +4,7 @@ import ShopPage from '../views/ShopPage.vue';
 import ContactPage from '../views/ContactPage.vue';
 import SingleProduct from '@/views/SingleProduct.vue';
 import CartPage from '@/views/CartPage.vue';
+import CategoriesProducts from '@/views/CategoriesProducts.vue';
 
 
 
@@ -32,7 +33,11 @@ const routes = [
         name:'cartPage',
         component:CartPage
     },
-    
+    {
+        path:'/categories/:category',
+        name:'categoryPage',
+        component:CategoriesProducts
+    },
 
 ]
 

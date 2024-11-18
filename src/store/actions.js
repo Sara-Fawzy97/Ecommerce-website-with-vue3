@@ -1,5 +1,6 @@
 import axiosClient from "../axiosClient"
 // import axios from 'axios'
+// baseURL: 'https://dummyjson.com/'
 
 //////get All Categories////////////
 export  const getAllCategories=({commit})=>{
@@ -35,3 +36,10 @@ export const decrement=({ commit }) =>{
         }
 
 
+//////////////get products by categories /////////////
+export const getCategoryProducts=({commit},category)=>{
+
+    axiosClient.get(`products/category/:${category}`).then(res=>{
+               commit('getProducts',res.data)
+    })
+}
