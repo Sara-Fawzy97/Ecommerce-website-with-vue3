@@ -2,8 +2,8 @@ import { createMemoryHistory, createRouter } from 'vue-router'
 import HomePage from '../views/HomePage.vue';
 import ShopPage from '../views/ShopPage.vue';
 import ContactPage from '../views/ContactPage.vue';
-import SingleProduct from '@/views/SingleProduct.vue';
-import CartPage from '@/views/CartPage.vue';
+import SingleProduct from '../views/SingleProduct.vue';
+import CartPage from '../views/CartPage.vue';
 import CategoriesProducts from '@/views/CategoriesProducts.vue';
 
 

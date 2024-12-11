@@ -51,7 +51,7 @@
           >
         </div>
 
-        <div class="  card-hover:block bg-[#3A3A3A]/70 w-full h-full absolute top-0 content-center">
+        <div class="  rounded overCard bg-[#3A3A3A]/70 w-full h-full absolute top-0 content-center opacity-0">
           
           <router-link :to="'/shop/'+product.id" class="text-primary-color hover:bg-white py-2 px-7 border-solid border-primary-color border-2" >View</router-link><br>
 
@@ -62,12 +62,17 @@
   </div>
 
   <FeatuersView/>
+  <transition>
+<ToastView v-if="showToast" />
+</transition>
+
 </template>
 
 <script>
 import FeatuersView from "@/components/Features.vue";
+import ToastView from "@/components/Toast.vue";
 export default {
-    components:{FeatuersView}
+    components:{FeatuersView,ToastView}
 }
 </script>
 
@@ -78,11 +83,17 @@ import { useStore } from "vuex";
 const store = useStore();
 const products = computed(() => store.state.ALlproducts);
 
-let count= ref(1)
+ let showToast=ref(false);
+
+ let count= ref(1)
+
+
 const addToCart= (item)=>{
    item.count=count.value
    store.commit('addToCart',item)
- 
+
+ showToast.value=true
+   setTimeout(()=>showToast.value=false,2000)
 
 }
 
@@ -95,4 +106,22 @@ onMounted(() => {
 .thumb {
   background: url("../assets/thumb.png") no-repeat;
 }
+
+.card:hover .overCard{
+  opacity: 1;
+  transition: all .5s linear;
+}
+
+.toast-enter-from{
+  opacity: 0;
+}
+
+.toast-enter-to{
+  opacity: 1;
+}
+
+.toast-enter-active{
+  transition: all .5s linear;
+}
+
 </style>

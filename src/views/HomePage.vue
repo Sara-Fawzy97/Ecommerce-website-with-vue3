@@ -20,6 +20,8 @@
     </div>
   </div>
 
+
+  <!---- view categories--------->
   <div class="categories">
     <div class="my-20">
       <h5 class="text-3xl font-bold">Browse The Range</h5>
@@ -38,7 +40,7 @@
             <img
           :src="categoriesImg[index]"
           :alt="category.slug"
-          class="h-[150px] md:h-[300px]"
+          class="h-[150px] md:h-[300px] hover:scale-75 transition-all hover:opacity-25"
         />
         <a
           class="font-semibold text-[20px] md:text-[24px]"
@@ -52,6 +54,7 @@
       </div>
     </div>
   </div>
+  
   <!------------view products-------------->
   <div class="products">
     <div class="my-20">
@@ -63,7 +66,7 @@
         class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:px-6 px-2"
       >
         <div class="card mb-6 relative" v-for="product in products" :key="product.id">
-          <img :src="product.thumbnail" alt="product.title" />
+          <img :src="product.thumbnail" alt="product.title" class="hover:scale-125 transition-all" />
           <div class="description px-2 pt-2 pb-7 text-start">
             <h5
               class="dark-gray text-[16px] md:text-[22px] lg:text-[24px] font-semibold"
@@ -80,14 +83,13 @@
                <!--  the over background-------->
                
           </div>
-          <div
-              class="card-hover:block bg-[#3A3A3A]/70 w-full h-full absolute top-0 content-center"
-            >
+         
+          <div class="rounded overCard bg-[#3A3A3A]/70 w-full h-full absolute top-0 content-center opacity-0">
               <router-link
                 :to="'/shop/' + product.id"
                 class="text-primary-color hover:bg-white py-2 px-7 border-solid border-primary-color border-2"
                 >View</router-link
-              ><br />
+              > <br/>
 
               <button @click="addToCart(product)" class="bg-white text-primary-color py-2 px-7 mt-5">
                 Add To Cart
@@ -159,6 +161,11 @@ onMounted(() => {
 .description {
   background-color: #f4f5f7;
   height: 180px;
+}
+
+.card:hover .overCard{
+  opacity: 1;
+  transition: all .5s linear;
 }
 
 /*** mobile and tablet view***/

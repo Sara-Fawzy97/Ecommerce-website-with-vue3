@@ -106,6 +106,16 @@
 
 </template>
 
+
+<!-- <script>
+import{ToastView} from '../components/Toast.vue'
+ 
+export default {
+   components: {ToastView},
+  
+}
+</script> -->
+
 <script setup>
 
 import { computed, onMounted,ref } from "vue";
@@ -120,6 +130,7 @@ const SingleProduct = computed(() => store.state.oneProduct);
 const route = useRouter();
 
  let count =ref(1)
+ let showToast=ref(false)
 
   
 //to replace the main product img with others 
@@ -130,8 +141,7 @@ const updateImage=(img)=>{
 const addToCart= (item)=>{
    item.count=count.value
    store.commit('addToCart',item)
- 
-
+ showToast.value= !showToast.value
 }
 
 onMounted(()=>{

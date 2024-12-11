@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <nav class="flex justify-around items-center py-4 relative">
-      <a class="flex items-baseline" href="#">
-        <img src="../assets/logo.png" alt="logo" /> <span>Furniro</span></a
+  <div >
+    <nav class="flex  justify-around items-center py-4">
+      <router-link class="flex items-baseline" :to="{name:'homePage'}">
+        <img src="../assets/logo.png" alt="logo" /> <span>Furniro</span></router-link
       >
 
       <div class="flex lg:hidden">
@@ -16,7 +16,7 @@
         </svg> -->
         </button>
       </div>
-      <div class="list hidden lg:flex lg:gap-x-12">
+      <div class="list xsm:hidden md:flex md:gap-x-12">
         <router-link :to="{ name: 'homePage' }">Home</router-link>
         <router-link :to="{ name: 'shopPage' }">Shop</router-link>
         <router-link to="/">About</router-link>
@@ -62,14 +62,13 @@
           />
         </svg>
         <!----start of Sidebar cart----->
-
-        <transition>
-        <div  :class="!hidden? show : 'hidden'" class=" sidebar  shadow-2xl cart z-50 end-0 top-0 w-[400px] h-screen fixed text-left px-4 pt-3 bg-white flex flex-col justify-between">
+         <transition>
+        <div v-if="show" class=" sidebar  shadow-2xl cart z-50 end-0 top-0 w-[400px] h-screen fixed text-left px-4 pt-3 bg-white flex flex-col justify-between">
        
        <div>  
         <div class="flex justify-between content-center">
           <h3 class="text-[24px] font-semibold">Shopping list</h3>
-          <svg  @click="changeVisibilty()"  class=" hover:cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+          <svg @click="changeVisibilty()"  class=" self-center hover:cursor-pointer"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
         </div>
           <hr />
 
@@ -94,7 +93,7 @@
               <td>
                 <svg
                   @click="store.commit('delCartItem', item.id)"
-                  class="hover:cursor-pointer"
+                  class="transition ease-in-out delay-75 hover:-translate-y-1 hover:cursor-pointer " 
                   width="20"
                   height="20"
                   viewBox="0 0 20 20"
@@ -130,7 +129,6 @@
           
         </div>
       </transition>
-
         <!----end of sidebar cart------------>
       </div>
     </nav>
@@ -143,11 +141,11 @@ import { computed, onMounted,ref } from "vue";
 
 const store = useStore();
 
-let hidden=ref(true);
+let show=ref(false);
 
 const changeVisibilty=()=>{
-  hidden.value =!hidden.value
-  console.log(hidden.value)
+  show.value =!show.value
+  // console.log(hidden.value)
 }
 const cartItems = computed(() => store.state.cartItems);
 
@@ -169,7 +167,7 @@ onMounted(() => {
 
 <script>
 export default {
-  name: "HeaderView",
+  name: "HeaderView,ToastView",
 };
 </script>
 
@@ -187,13 +185,32 @@ svg {
   width: 22px;
   height: 22px;
 }
-.show{
-  opacity:1;
-  
+
+
+.v-enter-from{
+ right:-400px;
+ opacity: 0;
+
 }
-.hidden{
-  opacity:0
-  
+
+.v-enter-to{
+ right:0;
+ opacity: 1;
 }
+
+.v-enter-active{
+  transition: all linear 1s;
+
+}
+.v-leave-to {
+  right:-400px;
+  opacity: 0;
+} 
+.v-leave-active{
+  transition: all linear 1s;
+
+}
+
+
 
 </style>
