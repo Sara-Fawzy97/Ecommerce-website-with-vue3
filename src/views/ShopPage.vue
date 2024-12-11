@@ -62,6 +62,8 @@
   </div>
 
   <FeatuersView/>
+
+  <!-----toast after add to cart----->
   <transition>
 <ToastView v-if="showToast" />
 </transition>
@@ -93,7 +95,7 @@ const addToCart= (item)=>{
    store.commit('addToCart',item)
 
  showToast.value=true
-   setTimeout(()=>showToast.value=false,2000)
+   setTimeout(()=>showToast.value=false,1000)
 
 }
 
@@ -112,16 +114,6 @@ onMounted(() => {
   transition: all .5s linear;
 }
 
-.toast-enter-from{
-  opacity: 0;
-}
 
-.toast-enter-to{
-  opacity: 1;
-}
-
-.toast-enter-active{
-  transition: all .5s linear;
-}
 
 </style>

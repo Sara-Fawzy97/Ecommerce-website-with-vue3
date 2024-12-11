@@ -105,7 +105,20 @@
       >
     </div>
   </div>
+
+  <!-----toast after add to cart----->
+  <transition>
+<ToastView v-if="showToast" />
+</transition>
+
 </template>
+
+<script>
+import ToastView from "@/components/Toast.vue";
+export default {
+    components:{ToastView}
+}
+</script>
 
 <script setup>
 import { computed, onMounted,ref } from "vue";
@@ -121,10 +134,14 @@ const categories = computed(() => store.state.categories);
 const categoriesImg = computed(() => store.state.categoriesImg);
 const products = computed(() => store.state.ALlproducts);
 
+let showToast=ref(false);
 let count= ref(1)
 const addToCart= (item)=>{
    item.count=count.value
    store.commit('addToCart',item)
+   showToast.value=true
+   setTimeout(()=>showToast.value=false,1000)
+
 }
 
 onMounted(() => {
