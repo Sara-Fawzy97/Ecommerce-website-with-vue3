@@ -59,6 +59,14 @@
         </div>
       </div>
     </div>
+  
+    <vue-awesome-paginate
+    :total-items="194"
+    :items-per-page="10"
+    :max-pages-shown="4"
+    v-model="currentPage"
+    @click="onClickHandler"
+  />
   </div>
 
   <FeatuersView/>
@@ -73,6 +81,7 @@
 <script>
 import FeatuersView from "@/components/Features.vue";
 import ToastView from "@/components/Toast.vue";
+
 export default {
     components:{FeatuersView,ToastView}
 }
@@ -89,19 +98,33 @@ const products = computed(() => store.state.ALlproducts);
 
  let count= ref(1)
 
+ const onClickHandler = (page) => {
+  console.log(skip.value +"+"+ limit.value)
+  skip.value=(page*limit.value)-limit.value
+  console.log(skip.value +"+"+ limit.value)
+  store.dispatch("getAllProducts",{limit:limit.value,skip:skip.value});
+
+    console.log(page);
+  };
+
+  const currentPage = ref(1);
+
 
 const addToCart= (item)=>{
    item.count=count.value
    store.commit('addToCart',item)
 
- showToast.value=true
+   showToast.value=true
    setTimeout(()=>showToast.value=false,1000)
-
 }
 
-onMounted(() => {
-  store.dispatch("getAllProducts");
+let limit=ref(30)
+let skip=ref(0)
+
+onMounted(() => {  
+  store.dispatch("getAllProducts",{limit:limit.value,skip:skip.value});
 });
+
 </script>
 
 <style>
@@ -115,5 +138,43 @@ onMounted(() => {
 }
 
 
+.pagination-container {
+    display: flex;
 
+    column-gap: 10px;
+  }
+
+  .paginate-buttons {
+    height: 40px;
+
+    width: 40px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    background-color: rgb(242, 242, 242);
+
+    border: 1px solid rgb(217, 217, 217);
+
+    color: black;
+  }
+
+  .paginate-buttons:hover {
+    background-color: #d8d8d8;
+  }
+
+  .active-page {
+    background-color: #3498db;
+
+    border: 1px solid #3498db;
+
+    color: white;
+  }
+
+  .active-page:hover{
+    background-color: #2988c8;
+ 
+
+  }
 </style>

@@ -13,8 +13,8 @@ export  const getAllCategories=({commit})=>{
 }
 
 ///////get All products////////////
-export const getAllProducts=({commit})=>{
-    axiosClient.get('products').then(res=>{
+export const getAllProducts=({commit},{limit,skip})=>{
+    axiosClient.get(`products?limit=${limit}&skip=${skip}`).then(res=>{
         commit('getProducts',res.data)
     })
 }

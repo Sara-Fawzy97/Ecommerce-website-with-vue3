@@ -147,7 +147,7 @@ const addToCart= (item)=>{
 onMounted(() => {
   // getCategories()
   store.dispatch("getAllCategories");
-  store.dispatch("getAllProducts");
+  store.dispatch("getAllProducts",{limit:12,skip:0});
 });
 </script>
 
