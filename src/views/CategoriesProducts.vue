@@ -1,7 +1,8 @@
 <template>
-  <p>Categor</p>
+  <p>Category is </p>
   <!-- <all-products/> -->
-  {{ category }}
+  <!-- <p> </p> -->
+
 </template>
 
 <script setup>
@@ -11,7 +12,7 @@ import { useStore } from "vuex";
 import { useRouter } from 'vue-router'
 
 const store = useStore();
-const category = computed(() => store.state.category);
+const categProducts = computed(() => store.state.category);
 const route = useRouter();
 
  onMounted(()=>{
