@@ -39,7 +39,16 @@ export const decrement=({ commit }) =>{
 //////////////get products by categories /////////////
 export const getCategoryProducts=({commit},category)=>{
 
-    axiosClient.get(`products/category/:${category}`).then(res=>{
-               commit('getProducts',res.data)
+    axiosClient.get(`products/category/${category}`).then(res=>{
+               commit('categoriesProducts',res.data)
+    })
+}
+// 'https://dummyjson.com/products?sortBy=title&order=asc'
+
+//////Sort products By ///////////
+export const sort=({commit},{sort,order})=>{
+
+    axiosClient.get(`products?sortBy=${sort}&order=${order}`).then(res=>{
+        commit('sortBy',res.data)
     })
 }

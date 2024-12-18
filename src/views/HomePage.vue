@@ -98,7 +98,7 @@
         </div>
       </div>
       <router-link
-        :to="{ name: 'shopPage' }"
+        to="/shop"
         class="text-primary-color text-base border-solid border-primary-color border-2 py-2 px-7 mt-5"
       >
         See More</router-link

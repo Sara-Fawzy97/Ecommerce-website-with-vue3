@@ -2,7 +2,7 @@
  
   <HeaderView/>
   
-  <router-view/>
+  <Router-view />
 
   <FooterView/>
   

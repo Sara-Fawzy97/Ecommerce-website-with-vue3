@@ -1,3 +1,5 @@
+
+
  export const getCategories=(state,categories)=>{
 
    state.categories=categories
@@ -69,8 +71,13 @@ export const delCartItem=(state,id)=>{
 
 export const categoriesProducts=(state,oneCategory)=>{
 
-  state.category=oneCategory
+  state.ALlproducts=oneCategory.products
   console.log(oneCategory)
 
 
+}
+
+export const sortBy=(state,sortedProducts)=>{
+  state.ALlproducts=sortedProducts.products
+  console.log(sortedProducts.products)
 }

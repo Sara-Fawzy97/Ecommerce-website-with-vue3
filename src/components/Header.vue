@@ -162,6 +162,7 @@ let handleTotalPrice = () => {
 onMounted(() => {
   store.commit("getCart");
   handleTotalPrice();
+  
 });
 </script>
 
