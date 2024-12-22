@@ -13,7 +13,7 @@
       <span
         ><router-link
           :to="{ name: 'shopPage' }"
-          class="font-bold bg-primary-color md:p-3"
+          class="font-bold bg-primary-color md:p-3 rounded "
           >Buy Now</router-link
         ></span
       >
@@ -36,7 +36,7 @@
         :key="index"
       >
         <!-- {{ category }} -->
-          <router-link :to="'/categories/'+ category.name "> 
+          <router-link to="/shop" @click="store.dispatch('getCategoryProducts', category.slug)"> 
             <img
           :src="categoriesImg[index]"
           :alt="category.slug"
@@ -143,6 +143,9 @@ const addToCart= (item)=>{
    setTimeout(()=>showToast.value=false,1000)
 
 }
+//  const handelCategories=()=>{
+//   store.dispatch()
+//  }
 
 onMounted(() => {
   // getCategories()
@@ -153,7 +156,7 @@ onMounted(() => {
 
 <style>
 .homeBanner {
-  background: url("../assets/banner.png") no-repeat;
+  background: url("../assets/banner.png") no-repeat fixed;
   background-size: cover;
   /* height: 716px; */
   overflow: hidden;

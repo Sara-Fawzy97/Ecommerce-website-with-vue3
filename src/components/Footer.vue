@@ -12,9 +12,9 @@
         <div class="font-medium"> 
         <ul>
             <li><router-link :to="{name:'homePage'}">Home</router-link></li>
-           <li> <router-link to="/">Shop</router-link></li>
+           <li> <router-link to="/shop">Shop</router-link></li>
            <li> <router-link to="">About</router-link></li>
-           <li> <router-link to="">Contact</router-link> </li>
+           <li> <router-link to="/contact">Contact</router-link> </li>
         </ul>
     </div>
       </div>

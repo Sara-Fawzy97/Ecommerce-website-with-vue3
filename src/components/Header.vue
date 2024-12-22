@@ -5,22 +5,22 @@
         <img src="../assets/logo.png" alt="logo" /> <span>Furniro</span></router-link
       >
 
-      <div class="flex lg:hidden">
+      <div class="flex md:hidden">
         <button
           type="button"
           class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
         >
           <span class="sr-only">Open main menu</span>
-          <!-- <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg> -->
+        </svg>
         </button>
       </div>
-      <div class="list xsm:hidden md:flex md:gap-x-12">
-        <router-link :to="{ name: 'homePage' }">Home</router-link>
-        <router-link :to="{ name: 'shopPage' }">Shop</router-link>
-        <router-link to="/">About</router-link>
-        <router-link :to="{ name: 'contactPage' }">Contact</router-link>
+      <div class="list hidden sm:flex md:gap-x-12">
+        <router-link :to="{ name: 'homePage' }" class="hover:text-primary-color">Home</router-link>
+        <router-link :to="{ name: 'shopPage' }" class="hover:text-primary-color">Shop</router-link>
+        <router-link to="/" class="hover:text-primary-color">About</router-link>
+        <router-link :to="{ name: 'contactPage' }" class="hover:text-primary-color">Contact</router-link>
       </div>
 
       <div class="flex gap-x-5">
@@ -33,8 +33,9 @@
             d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z"
           />
         </svg>
-        <svg
-          class="hover:cursor-pointer"
+        <svg 
+         @click="changeVisibiltySearch()"
+          class="hover:cursor-pointer "
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
         >
@@ -42,6 +43,21 @@
             d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
           />
         </svg>
+        <!----start of search form------>
+        <transition>
+          <div v-if="showSearch"  class=" absolute bg-white top-14 end-20 rounded shadow-2xl">
+          <div class="flex p-2 justify-between">
+            <form @input="searchItems()" >
+              <input type="text" v-model="searchKey" id="search" name="search" placeholder="Search..." class="rounded ps-2">
+          </form>
+          <svg  @click="changeVisibiltySearch()" class=" hover:cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+      
+          </div>
+        </div>
+        </transition>
+        <!----end of search form------>
+
+
         <svg
           class="hover:cursor-pointer"
           xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +68,7 @@
           />
         </svg>
 
-        <svg @click="changeVisibilty()"
+        <svg @click="changeVisibiltyCart()"
           class=" hover:cursor-pointer"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 576 512"
@@ -63,12 +79,12 @@
         </svg>
         <!----start of Sidebar cart----->
          <transition>
-        <div v-if="show" class=" sidebar  shadow-2xl cart z-50 end-0 top-0 w-[400px] h-screen fixed text-left px-4 pt-3 bg-white flex flex-col justify-between">
+        <div v-if="showCart" class=" sidebar  shadow-2xl cart z-50 end-0 top-0 w-[400px] h-screen fixed text-left px-4 pt-3 bg-white flex flex-col justify-between">
        
        <div>  
         <div class="flex justify-between content-center">
           <h3 class="text-[24px] font-semibold">Shopping list</h3>
-          <svg @click="changeVisibilty()"  class=" self-center hover:cursor-pointer"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+          <svg @click="changeVisibiltyCart()"  class=" self-center hover:cursor-pointer"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
         </div>
           <hr />
 
@@ -139,12 +155,22 @@
 import { useStore } from "vuex";
 import { computed, onMounted,ref } from "vue";
 
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
 const store = useStore();
 
-let show=ref(false);
+let showCart=ref(false);
+let showSearch=ref(false);
 
-const changeVisibilty=()=>{
-  show.value =!show.value
+const changeVisibiltyCart=()=>{
+  showCart.value =!showCart.value
+  // console.log(hidden.value)
+}
+
+const changeVisibiltySearch=()=>{
+  showSearch.value =!showSearch.value
   // console.log(hidden.value)
 }
 const cartItems = computed(() => store.state.cartItems);
@@ -158,6 +184,14 @@ let handleTotalPrice = () => {
   });
   return total;
 };
+
+const searchKey=ref('')
+const searchItems=()=>{
+  router.push('/shop')
+
+  store.dispatch('searchProducts',searchKey.value)
+  console.log(searchKey.value)
+}
 
 onMounted(() => {
   store.commit("getCart");
