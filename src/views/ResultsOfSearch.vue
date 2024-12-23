@@ -9,10 +9,7 @@
     
 <featuers-view></featuers-view>
 
- <!-----toast after add to cart----->
- <transition>
-    <ToastView v-if="showToast" />
-  </transition>
+ 
 
 </template>
  
@@ -20,16 +17,14 @@
 
 <script setup>
 import FeatuersView from "@/components/Features.vue";
-import ToastView from "@/components/Toast.vue";
 import ProductsView from "@/components/AllProducts.vue";
 
-import {computed,ref} from "vue";
+import {computed} from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
 
 const searcheProducts = computed(() => store.state.searchedProducts);
-let showToast = ref(false);
 
 
 </script>
