@@ -53,9 +53,9 @@ export const sort=({commit},{sort,order})=>{
     })
 }
 
-
+/////////For searching ////////
 export const searchProducts= ({commit},prod)=>{
     axiosClient.get(`products/search?q=${prod}`).then(res=>{
-        commit('search',res)
+        commit('search',res.data)
     })
 }

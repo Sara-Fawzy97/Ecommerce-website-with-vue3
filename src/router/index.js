@@ -5,8 +5,7 @@ import ContactPage from '../views/ContactPage.vue';
 import SingleProduct from '../views/SingleProduct.vue';
 import CartPage from '../views/CartPage.vue';
 import CategoriesProducts from '@/views/CategoriesProducts.vue';
-
-
+import ResultsOfSearch from '@/views/ResultsOfSearch.vue';
 
 
 const routes = [
@@ -37,8 +36,11 @@ const routes = [
         path:'/categories/:category',
         name:'categoryPage',
         component:CategoriesProducts
-    },
-
+    },   {
+        path:'/search/:key',
+        name:'searchPage',
+        component:ResultsOfSearch
+    },  
 ]
 
 const router = createRouter({

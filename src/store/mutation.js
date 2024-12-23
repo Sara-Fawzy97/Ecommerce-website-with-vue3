@@ -82,6 +82,6 @@ export const sortBy=(state,sortedProducts)=>{
   console.log(sortedProducts.products)
 }
 export const search=(state,results)=>{
-  state.ALlproducts=results.products
+  state.searchedProducts=results.products
   console.log(results)
 }

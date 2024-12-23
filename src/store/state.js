@@ -8,5 +8,6 @@ export default {
     category:[],
     ALlproducts:[],
     oneProduct:{},
-    cartItems:[]
+    cartItems:[],
+    searchedProducts:[]
 }

@@ -187,9 +187,10 @@ let handleTotalPrice = () => {
 
 const searchKey=ref('')
 const searchItems=()=>{
-  router.push('/shop')
 
   store.dispatch('searchProducts',searchKey.value)
+  router.push(`/search/${searchKey.value}`)
+
   console.log(searchKey.value)
 }
 
