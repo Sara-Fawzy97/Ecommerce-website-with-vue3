@@ -20,7 +20,6 @@
     </div>
   </div>
 
-
   <!---- view categories--------->
   <div class="categories">
     <div class="my-20">
@@ -72,7 +71,8 @@
       >
     </div>
   </div>
-
+  
+  <SearchView/>
   
 </template>
 
@@ -80,23 +80,14 @@
 
 <script setup>
 import ProductsView from "@/components/AllProducts.vue";
-
+import SearchView from "@/components/SearchIcon.vue";
 import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
-// import { ALlProducts } from "../components/AllProducts.vue";
-
-// const {categories,load}=getCategories()
-// categories
-// load()
 
 const store = useStore();
 const categories = computed(() => store.state.categories);
 const categoriesImg = computed(() => store.state.categoriesImg);
 const products = computed(() => store.state.ALlproducts);
-
-//  const handelCategories=()=>{
-//   store.dispatch()
-//  }
 
 onMounted(() => {
   // getCategories()

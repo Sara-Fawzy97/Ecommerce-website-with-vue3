@@ -1,21 +1,39 @@
 <template>
   <div >
     <nav class="flex  justify-around items-center py-4">
-      <router-link class="flex items-baseline" :to="{name:'homePage'}">
-        <img src="../assets/logo.png" alt="logo" /> <span>Furniro</span></router-link
-      >
-
-      <div class="flex md:hidden">
+       <!--------menus and mobileIcon-------->
+       <div class="flex md:hidden" @click="changeVisibiltyMenu()">
         <button
           type="button"
           class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
         >
           <span class="sr-only">Open main menu</span>
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+          <svg class="h-6 w-7" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
         </button>
       </div>
+<transition>
+      <div  v-if='showMobileMenu' class="mobileList  h-screen fixed text-left z-50  pt-3 w-[200px] start-0 top-0 bg-white ">
+        <svg @click="changeVisibiltyMenu()"  class=" p-1 justify-self-end hover:cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        <div class="list  ">
+        <router-link :to="{ name: 'homePage' }" class="hover:text-primary-color px-5 py-7">Home</router-link>
+        <hr class="border border-[#eee]">
+        <router-link :to="{ name: 'shopPage' }" class="hover:text-primary-color px-5 my-7">Shop</router-link>
+        <hr class="border border-[#eee]">
+        <router-link to="/" class="hover:text-primary-color px-5">About</router-link>
+        <hr class="border border-[#eee]">
+        <router-link :to="{ name: 'contactPage' }" class="hover:text-primary-color px-5">Contact</router-link>
+      </div>
+    </div>
+  </transition>
+
+      <!------logo------->
+      <router-link class="flex items-baseline" :to="{name:'homePage'}">
+        <img src="../assets/logo.png" alt="logo" /> <span class="text-[26px] md:text-[36px]">Furniro</span></router-link
+      >
+
+     <!-----basic menu for pc------>
       <div class="list hidden sm:flex md:gap-x-12">
         <router-link :to="{ name: 'homePage' }" class="hover:text-primary-color">Home</router-link>
         <router-link :to="{ name: 'shopPage' }" class="hover:text-primary-color">Shop</router-link>
@@ -23,7 +41,8 @@
         <router-link :to="{ name: 'contactPage' }" class="hover:text-primary-color">Contact</router-link>
       </div>
 
-      <div class="flex gap-x-5">
+      <!-------icons-------->
+      <div class="flex gap-x-1 md:gap-x-5">
         <svg
           class="hover:cursor-pointer"
           xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +54,7 @@
         </svg>
         <svg 
          @click="changeVisibiltySearch()"
-          class="hover:cursor-pointer "
+          class="hover:cursor-pointer hidden md:block"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
         >
@@ -59,7 +78,7 @@
 
 
         <svg
-          class="hover:cursor-pointer"
+          class="hover:cursor-pointer hidden md:block"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
         >
@@ -79,7 +98,7 @@
         </svg>
         <!----start of Sidebar cart----->
          <transition>
-        <div v-if="showCart" class=" sidebar  shadow-2xl cart z-50 end-0 top-0 w-[400px] h-screen fixed text-left px-4 pt-3 bg-white flex flex-col justify-between">
+        <div v-if="showCart" class=" sidebar  shadow-2xl cart z-50 end-0 top-0 w-[350px] md:w-[400px] h-screen fixed text-left px-4 pt-3 bg-white flex flex-col justify-between">
        
        <div>  
         <div class="flex justify-between content-center">
@@ -144,6 +163,8 @@
           </div>
           
         </div>
+
+
       </transition>
         <!----end of sidebar cart------------>
       </div>
@@ -173,6 +194,11 @@ const changeVisibiltySearch=()=>{
   showSearch.value =!showSearch.value
   // console.log(hidden.value)
 }
+let showMobileMenu=ref(false);
+const changeVisibiltyMenu=()=>{
+  showMobileMenu.value=!showMobileMenu.value
+}
+
 const cartItems = computed(() => store.state.cartItems);
 
 let total =ref(0) ;
@@ -217,10 +243,10 @@ nav > a {
   font-family: "Poppins", serif;
   font-weight: 500;
 }
-svg {
+/* svg {
   width: 22px;
   height: 22px;
-}
+} */
 
 
 .v-enter-from{
@@ -247,6 +273,12 @@ svg {
 
 }
 
-
+/***mobile only* */
+@media (max-width: 425px) {
+  svg {
+  width: 17px;
+  height: 17px;
+}
+}
 
 </style>

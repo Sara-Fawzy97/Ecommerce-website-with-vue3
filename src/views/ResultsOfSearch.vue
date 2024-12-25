@@ -9,6 +9,7 @@
     
 <featuers-view></featuers-view>
 
+<SearchView/>
  
 
 </template>
@@ -18,6 +19,7 @@
 <script setup>
 import FeatuersView from "@/components/Features.vue";
 import ProductsView from "@/components/AllProducts.vue";
+import SearchView from "@/components/SearchIcon.vue";
 
 import {computed} from "vue";
 import { useStore } from "vuex";

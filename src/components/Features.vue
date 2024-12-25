@@ -49,8 +49,8 @@
       </div>
       <div class="flex gap-2">
         <svg
-          width="61"
-          height="56"
+          width="61px"
+          height="56px"
           viewBox="0 0 61 56"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
