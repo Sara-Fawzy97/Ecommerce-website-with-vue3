@@ -1,13 +1,13 @@
-import { createRouter,createMemoryHistory } from 'vue-router'
-import HomePage from '../views/HomePage.vue';
-import ShopPage from '@/views/ShopPage.vue';
-import ContactPage from '../views/ContactPage.vue';
-import SingleProduct from '../views/SingleProduct.vue';
-import CartPage from '../views/CartPage.vue';
-import CategoriesProducts from '@/views/CategoriesProducts.vue';
-import ResultsOfSearch from '@/views/ResultsOfSearch.vue';
+import { createRouter,createWebHistory  } from 'vue-router'
+const HomePage =()=>import ('../views/HomePage.vue');
+const ShopPage= ()=> import( '@/views/ShopPage.vue');
+const ContactPage = ()=> import( '../views/ContactPage.vue');
+const SingleProduct = ()=> import('../views/SingleProduct.vue');
+const CartPage = ()=> import( '../views/CartPage.vue');
+const CategoriesProducts = ()=> import( '@/views/CategoriesProducts.vue');
+const ResultsOfSearch = ()=> import( '@/views/ResultsOfSearch.vue');
 
-
+// const UserDetails = () => import('./views/UserDetails.vue')
 const routes = [
     {
         path: '/',
@@ -44,7 +44,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes,
 })
 

@@ -101,14 +101,18 @@
         <div v-if="showCart" class=" sidebar  shadow-2xl cart z-50 end-0 top-0 w-[350px] md:w-[400px] h-screen fixed text-left px-4 pt-3 bg-white flex flex-col justify-between">
        
        <div>  
-        <div class="flex justify-between content-center">
+          <div class="flex justify-between content-center">
           <h3 class="text-[24px] font-semibold">Shopping list</h3>
           <svg @click="changeVisibiltyCart()"  class=" self-center hover:cursor-pointer"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
-        </div>
+          </div>
           <hr />
+          <div v-if="cartItems.length==0"  class="text-left m-20">
+             <h3 class="font-bold">Your cart is empty.... </h3>
+              <router-link :to="{ name: 'shopPage' }" class="underline hover:text-primary-color ">go for shopping</router-link>
+          </div>
 
           <div class="max-h-[450px] overflow-y-auto">
-            <table class=" p-5 w-full text-left">
+            <table class=" p- w-full text-left">
             <tr v-for="item in cartItems" :key="item.id">
               <td>
                 <img
@@ -144,10 +148,8 @@
                 </svg>
               </td>
             </tr>
-          </table>
+            </table>
           </div>
-         
-
         </div> 
 
           <div class="mb-5" >
@@ -174,7 +176,7 @@
 
 <script setup>
 import { useStore } from "vuex";
-import { computed, onMounted,ref } from "vue";
+import { computed, onMounted,ref} from "vue";
 
 import { useRouter } from "vue-router";
 
@@ -201,15 +203,9 @@ const changeVisibiltyMenu=()=>{
 
 const cartItems = computed(() => store.state.cartItems);
 
-let total =ref(0) ;
+const total=computed(()=>cartItems.value.reduce((sum,item)=>sum+ Math.ceil(item.count*item.price),0)
+)
 
-let handleTotalPrice = () => {
-  
-  cartItems.value.forEach((item) => {
-    total.value += Math.ceil(item.count * item.price);
-  });
-  return total;
-};
 
 const searchKey=ref('')
 const searchItems=()=>{
@@ -222,7 +218,6 @@ const searchItems=()=>{
 
 onMounted(() => {
   store.commit("getCart");
-  handleTotalPrice();
   
 });
 </script>
@@ -243,10 +238,10 @@ nav > a {
   font-family: "Poppins", serif;
   font-weight: 500;
 }
-/* svg {
+svg {
   width: 22px;
   height: 22px;
-} */
+} 
 
 
 .v-enter-from{

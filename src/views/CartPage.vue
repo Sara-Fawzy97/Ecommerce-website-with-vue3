@@ -11,6 +11,8 @@
     </div>
   </div>
 
+
+
 <div>
     <div class="p-10 grid md:grid-cols-3  gap-4">
         <!---------CartItems ------->
@@ -23,6 +25,12 @@
                 <th class="p-3">Subtotal</th>
                 <th class="p-3"></th>
             </tr>
+            <tr>
+              <div v-if="cartItems.length==0"  class="text-left m-20">
+             <h3 class="font-bold">Your cart is empty.... </h3>
+              <router-link :to="{ name: 'shopPage' }" class="underline hover:text-primary-color ">go for shopping</router-link>
+              </div>
+</tr>
                 <tr v-for="item in cartItems" :key="item.id">
                     <td class="md:flex gap-2 ">
                         <img :src="item.thumbnail" :alt="item.title" class="w-[100px] h-[100px]">
@@ -36,18 +44,18 @@
             </table>
         </div>
 
-        <!------- Cart Toltal------->
+        <!------- Cart Total------->
         <div>
             <div class=" px-10 md:px-16  pt-10 pb-20px bg-[#F9F1E7]">
                 <h3 class="font-semibold text-[32px] ">Cart Totals</h3>
 
                 <div class="text-start flex justify-between mt-16 ">
                 <p class="font-medium">Subtotal</p>
-                <p> $ {{ total.value}}</p>
+                <p> $ {{ total}}</p>
                 </div>
                 <div class="text-start flex justify-between mt-7">
                 <p class="font-medium">Total</p>
-                <p class="text-[20px] text-primary-color"> $ {{ total.value}}</p>
+                <p class="text-[20px] text-primary-color"> $ {{ total}}</p>
                 </div>
 
                 <button  class="mt-7 mb-16 border rounded-lg px-7 py-3 text-[20px] hover:bg-primary-color hover:text-white">Check Out</button>
@@ -66,24 +74,25 @@ import SearchView from "@/components/SearchIcon.vue";
 import FeatuersView from "@/components/Features.vue";
 
 import { useStore } from "vuex";
-import { computed, onMounted,ref } from "vue";
-// import Features from "@/components/Features.vue";
+import { computed, onMounted} from "vue";
 
 const store = useStore();
 const cartItems = computed(() => store.state.cartItems);
-const total=ref(0);
+// let total=ref(0);
+const total=computed(()=>cartItems.value.reduce((sum,item)=>sum+ Math.ceil(item.count*item.price),0)
+)
 
-let handleTotalPrice=()=>{
-           cartItems.value.forEach(item => {
-            total.value+= Math.ceil(item.count * item.price)
-           });
-return total.value
+// let handleTotalPrice=()=>{
+//            cartItems.value.forEach(item => {
+//             total.value+= Math.ceil(item.count * item.price)
+//            });
+// return total.value
          
-}
+// }
 
      onMounted(()=>{
         store.commit('getCart') 
-        handleTotalPrice()
+        // handleTotalPrice()
        
      })
 

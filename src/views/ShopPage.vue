@@ -1,5 +1,5 @@
 <template>
-  <div class="thumb h-[300px] content-center">
+  <div class="thumb h-[300px] content-center animate__animated  animate__fadeIn">
     <div>
         <h3 class="text-[48px] font-medium">Shop</h3>
         <div class="text-[16px]">
@@ -9,7 +9,7 @@
     </div>
   </div>
   
-  <div class="bg-[#F9F1E7]">
+  <div class="bg-[#F9F1E7] ">
     <div class="flex justify-between py-3 md:py-5 px-7 md:px-16">
       <div class="flex justify-between hover:cursor">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="pr-1 w-[22px] h-[22px]">
@@ -71,6 +71,7 @@
 
 
 <script setup>
+
 import FeatuersView from "@/components/Features.vue";
 import ProductsView from "@/components/AllProducts.vue";
 import SearchView from "@/components/SearchIcon.vue";

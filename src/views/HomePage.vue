@@ -1,5 +1,5 @@
 <template>
-  <div class="homeBanner md:pt-32 pt-9 md:pr-20 pr-10 pb-28">
+  <div class="animate__animated animate__fadeIn homeBanner md:pt-32 pt-9 md:pr-20 pr-10 pb-28">
     <div class="w-6/12 text-left md:p-11 p-3">
       <span class="text-xs font-semibold">New arrival</span>
       <h3 class="font-bold lg:text-5xl sm:text-2xl text-primary-color">
@@ -28,7 +28,7 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </p>
     </div>
-    <div class="flex text-center justify-around">
+    <div class="flex animate__animated  animate__fadeIn text-center justify-around">
       <div
         class="text-center"
         v-for="(category, index) in categories.slice(0, 3)"
@@ -55,7 +55,7 @@
   </div>
   
   <!------------view products-------------->
-  <div class="products">
+  <div class="products animate__animated  animate__fadeIn">
     <div class="my-20">
       <h5 class="text-3xl font-bold">Our Products</h5>
     </div>
@@ -65,7 +65,7 @@
 
       <router-link
         to="/shop"
-        class="text-primary-color text-base border-solid border-primary-color border-2 py-2 px-7 mt-5"
+        class="text-primary-color text-base border-solid border-primary-color rounded-lg border-2 py-2 px-7 mt-5"
       >
         See More</router-link
       >
@@ -79,6 +79,7 @@
 
 
 <script setup>
+import 'animate.css';
 import ProductsView from "@/components/AllProducts.vue";
 import SearchView from "@/components/SearchIcon.vue";
 import { computed, onMounted } from "vue";
@@ -90,7 +91,6 @@ const categoriesImg = computed(() => store.state.categoriesImg);
 const products = computed(() => store.state.ALlproducts);
 
 onMounted(() => {
-  // getCategories()
   store.dispatch("getAllCategories");
   store.dispatch("getAllProducts",{limit:12,skip:0});
 });
@@ -100,11 +100,9 @@ onMounted(() => {
 .homeBanner {
   background: url("../assets/banner.png") no-repeat fixed;
   background-size: cover;
-  /* height: 716px; */
   overflow: hidden;
 }
 .homeBanner div {
-  /* font-family: "Poppins", serif; */
   background-color: #fff3e3;
   float: right;
   border-radius: 10px;

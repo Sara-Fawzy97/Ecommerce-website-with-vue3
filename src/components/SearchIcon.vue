@@ -1,11 +1,11 @@
 <template>
     <div class="fixed z-55 top-32 -left-[220px] hover:left-0">
-        <aside class="flex bg-primary-color p-2  shadow-2xl justify-between w-[255px] rounded-r-full">
+        <aside class="flex bg-primary-color p-2 animate__animated animate__bounceInLeft  animate__delay-1s shadow-2xl justify-between w-[255px] rounded-r-full">
                 <form @input="searchItems()">
                     <input type="text" id="search"  v-model="searchKey" class="rounded-r-full ps-2" name="search" placeholder="Search...">
                 </form>
                 <svg 
-          class="hover:cursor-pointer "
+          class="hover:cursor-pointer w-[22px] h-[22px] "
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 512 512"
           fill="#fff"

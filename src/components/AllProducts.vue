@@ -1,9 +1,9 @@
 <template>
  <!-------display productss--->
  <div>
-    <div class="grid grid-cols-2 mt-10 md:grid-cols-3 lg:grid-cols-4 gap-4 md:px-6 px-2">
+    <div class="grid grid-cols-2 mt-10 md:grid-cols-3 lg:grid-cols-4 gap-4 md:px-6 px-2 animate__animated  animate__fadeIn">
       <!----the over background------>
-      <div class="card mb-6 relative" v-for="product in products" :key="product.id">
+      <div class="card mb-6 relative animate__animated animate__zoomIn animate__delay-2s" v-for="product in products" :key="product.id">
         <img :src="product.thumbnail" alt="product.title" />
         <div class="description px-2 pt-2 pb-7 text-start">
           <h5 class="dark-gray text-[16px] md:text-[22px] lg:text-[24px] font-semibold">
@@ -19,9 +19,9 @@
 
         <div class="rounded overCard bg-[#3A3A3A]/70 w-full h-full absolute top-0 content-center opacity-0">
           <router-link :to="'/shop/' + product.id"
-            class="text-primary-color hover:bg-white py-2 px-7 border-solid border-primary-color border-2">View</router-link><br />
+            class="text-primary-color hover:bg-white py-2 px-7 border-solid border-primary-color rounded-lg border-2">View</router-link><br />
 
-          <button @click="addToCart(product)" class="bg-white text-primary-color py-2 px-7 mt-5">
+          <button @click="addToCart(product)" class="bg-white rounded-lg text-primary-color py-2 px-7 mt-5">
             Add To Cart
           </button>
         </div>
@@ -37,6 +37,8 @@
 </template>
 
 <script setup>
+
+import 'animate.css';
 import { defineProps,ref } from "vue";
 import ToastView from "@/components/Toast.vue";
 import { useStore } from "vuex";

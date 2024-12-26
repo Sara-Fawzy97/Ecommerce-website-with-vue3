@@ -1,5 +1,5 @@
 <template>
-    <div class="thumb h-[300px] content-center">
+    <div class="thumb h-[300px] content-center animate__animated  animate__fadeIn">
     <div>
         <h3 class="text-[48px] font-medium">Contact Us</h3>
         <div class="text-[16px]">
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div class="my-20  ">
+  <div class="my-20 animate__animated  animate__fadeIn ">
       <h5 class="text-[26px] md:text-[36px] font-semibold text-[#000]">Get In Touch With Us</h5>
       <p class="text-gray text-[11px] md:text-base w-[300px] md:w-[644px] place-self-center "> For More Information About Our Product & Services. Please Feel Free To Drop Us An Email. Our Staff Always Be There To Help You Out. Do Not Hesitate! </p>
     </div>
@@ -44,7 +44,7 @@
       </div>
 
        <!----form ------>
-      <div >
+      <div class="animate__animated  animate__fadeIn" >
         <form class="text-start "> 
           <div>
           <label for="name" class="font-medium">Your Name</label>
@@ -72,6 +72,7 @@
 
 
 <script>
+import 'animate.css';
 import FeatuersView from "@/components/Features.vue";
 import SearchView from "@/components/SearchIcon.vue";
 
@@ -81,6 +82,10 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
+svg {
+  width: 22px;
+  height: 22px;
+} 
 
 </style>
